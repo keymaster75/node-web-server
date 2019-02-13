@@ -2,7 +2,7 @@ const express = require('express');
 
 var app = express();
 
-app.use(express.static('/javno'));
+app.use('/javno', express.static(__dirname + '/javno'));
 
 app.get('/', (req, res) => {
     //res.send('<h1>Zdravo Express!</h1>');
