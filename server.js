@@ -3,22 +3,29 @@ const hbs = require ('hbs');
 
 var app = express();
 
+hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.use('/', express.static(__dirname + '/javno'));
+
+hbs.registerHelper('getCurrentYear', () => {
+    return new Date().getFullYear();
+} );
+
+hbs.registerHelper('screamIt', (text) => {
+    return text.toUpperCase();
+});
 
 app.get('/', (req, res) => {
     //res.send('<h1>Zdravo Express!</h1>');
         res.render('home.hbs', {
-            pageTitle: 'Naslovna strana',
+            pageTitle: 'Naslovna strana sajta',
             welcomeMessage: 'Dobrodošli na našu web prezentaciju',
-            currentYear: new Date().getFullYear()
         });
 });
 
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'O nama',
-        currentYear: new Date().getFullYear()
     });
 });
 
