@@ -50,6 +50,12 @@ app.get('/about', (req, res) => {
     });
 });
 
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Strana za projekte',
+    });
+});
+
 app.get('/bad', (req, res) => {
     res.send({
         errorMesage: 'None existing page'
